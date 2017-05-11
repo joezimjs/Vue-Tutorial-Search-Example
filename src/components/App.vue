@@ -46,11 +46,9 @@
     </div>
 
     <div class="content">
-      <template v-for="pair in pairedItems">
-        <div class="row">
-          <tutorial v-for="item in pair" :item="item" :key="item.url" />
-        </div>
-      </template>
+      <div class="row" v-for="pair in pairedItems">
+        <tutorial v-for="item in pair" :item="item" :key="item.url" />
+      </div>
     </div>
 
     <footer class="footer">
