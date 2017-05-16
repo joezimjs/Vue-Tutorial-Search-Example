@@ -4,16 +4,20 @@
     <p>{{ item.description }}</p>
     <p>
       <template v-for="tech in item.tech">
-        <span :class="'label ' + tech.toLowerCase()">{{ tech }}</span>&nbsp;
+        <span :class="'label ' + tech">{{ mapTech(tech) }}</span>&nbsp;
       </template>
     </p>
   </div>
 </template>
 
 <script>
+import mapTech from '../utilities/tech-map'
 export default {
   name: 'tutorial',
-  props: ['item']
+  props: ['item'],
+  methods: {
+    mapTech: tech => mapTech(tech)
+  }
 }
 </script>
 
@@ -27,7 +31,7 @@ export default {
   .react {
     background-color: #06c4f9;
   }
-  .javascript {
+  .js {
     background-color: #eed94c;
   }
   .css {
