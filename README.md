@@ -1,6 +1,6 @@
-# tut-search
+# Vue Tutorial Search Example
 
-> Find the tutorial you're looking for
+Example Web App built with Vue for some tutorials written for AppendTo.com
 
 ## Build Setup
 
