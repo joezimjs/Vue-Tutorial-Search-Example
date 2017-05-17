@@ -16,7 +16,7 @@
     <Pagination v-model="page" :records="tutorials.length" :perPage="perPage" />
 
     <footer class="footer">
-      <p>&copy; 2017 <a href="https://www.joezimjs.com">Joseph Zimmerman</a></p>
+      <p>Copyright &copy; 2017 <a href="https://www.joezimjs.com">Joseph Zimmerman</a></p>
     </footer>
 
   </div>
@@ -29,8 +29,7 @@ import Pagination from './Pagination'
 import RadioGroup from './RadioGroup'
 import SearchBox from './SearchBox'
 import getArraySection from '../utilities/get-array-section'
-import tutorialData from '../data'
-import {technologies} from '../utilities/tech-map'
+import {tutorials as tutorialData, technologies } from '../data'
 
 export default {
   name: 'app',

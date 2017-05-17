@@ -11,12 +11,13 @@
 </template>
 
 <script>
-import mapTech from '../utilities/tech-map'
+import { technologies } from '../data'
+
 export default {
   name: 'tutorial',
   props: ['item'],
   methods: {
-    mapTech: tech => mapTech(tech)
+    mapTech: tech => technologies[tech] || ''
   }
 }
 </script>

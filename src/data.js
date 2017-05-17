@@ -1,4 +1,13 @@
-export default [
+export let technologies = {
+    'html': 'HTML',
+    'css': 'CSS',
+    'js': 'JavaScript',
+    'angular': 'Angular',
+    'react': 'React',
+    'vue': 'Vue'
+}
+
+export let tutorials = [
   {
     title: 'Subheading',
     url: '',
