@@ -7,13 +7,13 @@
 
     <div class="jumbotron">
       <p>Use the search box and technology selector to find a tutorial you're looking for.</p>
-      <SearchBox name="tech" v-model="searchTerm" />
-      <RadioGroup name="tech" v-model="tech" :options="techs" />
+      <SearchBox v-model="searchTerm" />
+      <RadioGroup v-model="tech" />
     </div>
 
-    <Pagination v-model="page" :records="tutorials.length" :perPage="perPage" />
-    <TutorialList :tutorials="pageOfTutorials" />
-    <Pagination v-model="page" :records="tutorials.length" :perPage="perPage" />
+    <Pagination v-model="page" :records="tutorials.length" :perPage="10" />
+    <TutorialList is='tutorial-list' :tutorials="pageOfTutorials" />
+    <Pagination v-model="page" :records="tutorials.length" :perPage="10" />
 
     <footer class="footer">
       <p>Copyright &copy; 2017 <a href="https://www.joezimjs.com">Joseph Zimmerman</a></p>
@@ -29,7 +29,7 @@ import Pagination from './Pagination'
 import RadioGroup from './RadioGroup'
 import SearchBox from './SearchBox'
 import getArraySection from '../utilities/get-array-section'
-import {tutorials as tutorialData, technologies } from '../data'
+import {tutorials as tutorialData } from '../data'
 
 export default {
   name: 'app',
@@ -38,15 +38,11 @@ export default {
     searchTerm: '',
     tech: '',
     tutorials: [],
-    page: 1,
-    perPage: 10,
-    techs: [
-      ['', 'All'], ...Object.entries(technologies)
-    ]
+    page: 1
   }),
   computed: {
     pageOfTutorials: function () {
-      return getArraySection(this.tutorials, this.page, this.perPage)
+      return getArraySection(this.tutorials, this.page, 10)
     }
   },
   watch: {

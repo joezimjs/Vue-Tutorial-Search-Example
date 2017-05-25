@@ -1,37 +1,51 @@
 <template>
-  <div class="content">
-    <div class="row" v-for="pair in pairedItems">
-      <Tutorial class="tutorial" v-for="item in pair" :item="item" :key="item.url" />
-    </div>
+  <Transition name="swap" mode="out-in">
+  <div class="tutorial-list" :key="tutorials">
+    <Tutorial class="tutorial" v-for="tutorial in tutorials" :item="tutorial" :key="tutorial" />
   </div>
+  </Transition>
 </template>
 
 <script>
 import Tutorial from './Tutorial'
-import pair from '../utilities/pair'
 
 export default {
   name: 'tutorial-list',
   components: { Tutorial },
-  props: ['tutorials'],
-  computed: {
-    pairedItems: function () {
-      return pair(this.tutorials)
-    }
-  }
+  props: ['tutorials']
+
 }
 </script>
 
 <style scoped>
-  .content {
+  .tutorial-list {
     margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
   }
+
   .tutorial {
-    margin: 10px 0;
+    padding: 20px;
   }
-  @media (max-width: 768px) {
-    .tutorial:nth-child(2n) {
-      margin-top: 20px;
+
+  @media only screen and (min-width: 600px) {
+    .tutorial {
+      width: 50%;
     }
+  }
+
+  /* VUE TRANSITION */
+  .swap-enter-active, .swap-leave-active {
+    transition: all .25s ease-in-out;
+  }
+  .swap-enter, .swap-leave-active {
+    opacity: 0;
+  }
+  .swap-enter {
+    transform: translateX(75px);
+  }
+  .swap-leave-to {
+    transform: translateX(-75px);
   }
 </style>

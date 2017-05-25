@@ -1,44 +1,46 @@
 <template>
-  <div class="col-sm-6">
+  <div>
     <h4><a :href="item.url">{{ item.title }}</a></h4>
+    <p class="meta">
+      Published
+      <span class="meta-bit">{{ item.datePublished }}</span>
+      at
+      <span class="meta-bit">{{ domainOf(item.url) }}</span>
+    </p>
     <p>{{ item.description }}</p>
     <p>
-      <template v-for="tech in item.tech">
-        <span :class="'label ' + tech">{{ mapTech(tech) }}</span>&nbsp;
-      </template>
+      <TechLabel class="tech-label" v-for="tech in item.tech" :tech="tech" :key="tech" />
     </p>
   </div>
 </template>
 
 <script>
-import { technologies } from '../data'
+import TechLabel from './TechLabel'
+
+let parser = document.createElement('a')
 
 export default {
   name: 'tutorial',
   props: ['item'],
+  components: { TechLabel },
   methods: {
-    mapTech: tech => technologies[tech] || ''
+    domainOf: url => (parser.href = url, parser.hostname.replace(/^www\./, ''))
   }
 }
 </script>
 
 <style scoped>
-  .vue {
-    background-color: #41b883;
+  .meta {
+    color: #777;
+    font-size: .85em;
   }
-  .angular {
-    background-color: #dd0031;
+
+  .meta-bit {
+    color: #333;
+    font-weight: bold;
   }
-  .react {
-    background-color: #06c4f9;
-  }
-  .js {
-    background-color: #eed94c;
-  }
-  .css {
-    background-color: #1571b2;
-  }
-  .html {
-    background-color: #e44a24;
+
+  .tech-label + .tech-label {
+    margin-left: 10px;
   }
 </style>

@@ -35,7 +35,7 @@ export default {
     countText: {
       type: String,
       required: false,
-      default: 'Showing {from} to {to} of {count} records|{count} records|One record'
+      default: 'Showing {from} to {to} of {count} tutorials|{count} tutorials|1 tutorial'
     },
     currentPage: {
       type: Number,

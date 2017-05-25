@@ -2,29 +2,32 @@
   <div class="form-group text-center">
     <template v-for="option in options">
       <label class="radio-inline">
-        <input type="radio" :value="option[0]" :name="name" v-model="selected">
-        <strong>{{ option[1] }}</strong>
+        <input type="radio" :value="option" :name="name" v-model="selected">
+        <span class="label label-default" v-if="option === ''">All</span>
+        <TechLabel v-else :tech="option" />
       </label>
     </template>
 </div>
 </template>
 
 <script>
+import TechLabel from './TechLabel'
+import { technologies } from '../data'
+
 export default {
   name: 'radio-group',
+  components: { TechLabel },
   props: {
     value: {
-      required: true,
       default: ''
     },
     options: {
       type: Array,
-      required: true,
-      default: []
+      default: () => ['', ...Object.keys(technologies)]
     },
     name: {
       type: String,
-      required: true
+      default: 'tech-filter'
     }
   },
   data: function () {
