@@ -86,7 +86,7 @@ export let tutorials = [
     url: 'https://coligo.io/learn-vuex-by-building-notes-app/',
     datePublished: '2016-04-20',
     description: 'In this tutorial we\'ll be learning how to use Vuex in our VueJs projects by building a notes application. We\'ll briefly go over what Vuex is, when to use it, and how to structure your project for use with a Vuex application.',
-    tech: ['vue', 'vuex']
+    tech: ['vue']
 }, {
     title: 'Snake with Pygame',
     url: 'https://pythonspot.com/en/snake-with-pygame/',
