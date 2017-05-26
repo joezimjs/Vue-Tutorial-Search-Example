@@ -7,8 +7,6 @@
 </template>
 
 <script>
-import range from '../utilities/range'
-
 export default {
   props: {
     value: {

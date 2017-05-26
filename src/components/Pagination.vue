@@ -14,32 +14,27 @@
       </li>
     </ul>
 
-    <p v-show="parseInt(records)">{{count}}</p>
+    <p v-show="parseInt(items)">{{count}}</p>
   </div>
 </template>
 
 <script>
-import range from '../utilities/range'
-
 export default {
   props: {
-    records: {
+    items: {
       type: Number,
       required: true
     },
     perPage: {
       type: Number,
-      required: false,
       default: 10
     },
     countText: {
       type: String,
-      required: false,
       default: 'Showing {from} to {to} of {count} tutorials|{count} tutorials|1 tutorial'
     },
     currentPage: {
       type: Number,
-      required: false,
       default: 1
     }
   },
@@ -57,15 +52,15 @@ export default {
   },
   computed: {
     totalPages: function() {
-      return this.records ? Math.ceil(this.records / this.perPage) : 1
+      return this.items ? Math.ceil(this.items / this.perPage) : 1
     },
     count: function() {
       let from = (this.page - 1) * this.perPage + 1
-      let to = this.page == this.totalPages ? this.records : from + this.perPage - 1
+      let to = this.page == this.totalPages ? this.items : from + this.perPage - 1
       let parts = this.countText.split('|')
-      let i = this.records == 1 ? 2 : this.totalPages == 1 ? 1 : 0
+      let i = this.items == 1 ? 2 : this.totalPages == 1 ? 1 : 0
 
-      return parts[i].replace('{count}', this.records).replace('{from}', from).replace('{to}', to)
+      return parts[i].replace('{count}', this.items).replace('{from}', from).replace('{to}', to)
     }
   },
   methods: {

@@ -27,7 +27,7 @@ export let tutorials = [
     title: "Learn to Build Modern Web Apps with AngularJS and Ruby on Rails",
     url: "https://thinkster.io/tutorials/angular-rails",
     datePublished: "2017-05-01",
-    description: "Sed lorem neque, tincidunt sed lacus nec, gravida lobortis magna. In pharetra tellus sem, et efficitur ligula semper at. Nullam in auctor lectus. Vestibulum at eros at orci ornare faucibus.",
+    description: "The goal of this tutorial is to guide you through the creation of a Reddit/Hacker News clone using Rails 4 and AngularJS. By completing this tutorial, you will gain a basic understanding of Rails and AngularJS, using Rails to build a JSON REST API that interacts with an AngularJS frontend.",
     tech: ["angular", "ror"]
   },
   {
