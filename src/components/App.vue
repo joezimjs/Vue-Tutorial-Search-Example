@@ -11,9 +11,9 @@
       <RadioGroup v-model="tech" />
     </div>
 
-    <Pagination v-model="page" :records="tutorials.length" :perPage="10" />
+    <Pagination v-model="page" :items="tutorials.length" :perPage="10" />
     <TutorialList :tutorials="pageOfTutorials" />
-    <Pagination v-model="page" :records="tutorials.length" :perPage="10" />
+    <Pagination v-model="page" :items="tutorials.length" :perPage="10" />
 
     <footer class="footer">
       <p>Copyright &copy; 2017 <a href="https://www.joezimjs.com">Joseph Zimmerman</a></p>
@@ -25,14 +25,14 @@
 <script>
 import TutorialList from './TutorialList'
 import Pagination from './Pagination'
-import RadioGroup from './RadioGroup'
 import SearchBox from './SearchBox'
+import RadioGroup from './RadioGroup'
 import getArraySection from '../utilities/get-array-section'
 import { tutorials as tutorialData } from '../data'
 
 export default {
   name: 'app',
-  components: { TutorialList, Pagination, RadioGroup, SearchBox },
+  components: { TutorialList, Pagination, SearchBox, RadioGroup },
   data: () => ({
     searchTerm: '',
     tech: '',
