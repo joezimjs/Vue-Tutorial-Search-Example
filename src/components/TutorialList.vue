@@ -13,7 +13,6 @@ export default {
   name: 'tutorial-list',
   components: { Tutorial },
   props: ['tutorials']
-
 }
 </script>
 

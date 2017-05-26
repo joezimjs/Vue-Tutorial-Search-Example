@@ -60,15 +60,12 @@ export default {
       return this.records ? Math.ceil(this.records / this.perPage) : 1
     },
     count: function() {
-
-      let from = ((this.page - 1) * this.perPage) + 1
-      let to = this.page == (this.totalPages) ? this.records : from + this.perPage - 1
+      let from = (this.page - 1) * this.perPage + 1
+      let to = this.page == this.totalPages ? this.records : from + this.perPage - 1
       let parts = this.countText.split('|')
       let i = this.records == 1 ? 2 : this.totalPages == 1 ? 1 : 0
 
-      return parts[i].replace('{count}', this.records)
-        .replace('{from}', from)
-        .replace('{to}', to)
+      return parts[i].replace('{count}', this.records).replace('{from}', from).replace('{to}', to)
     }
   },
   methods: {

@@ -13,10 +13,10 @@ export default {
     }
   },
   computed: {
-    text: function () {
+    text: function() {
       return technologies[this.tech].label
     },
-    color: function () {
+    color: function() {
       return technologies[this.tech].color
     }
   }

@@ -30,11 +30,11 @@ export default {
       default: 'tech-filter'
     }
   },
-  data: function () {
+  data: function() {
     return { selected: this.value }
   },
   watch: {
-    selected: function (val) {
+    selected: function(val) {
       this.$emit('input', val)
     }
   }

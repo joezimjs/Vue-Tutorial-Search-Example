@@ -24,7 +24,7 @@ export default {
   props: ['item'],
   components: { TechLabel },
   methods: {
-    domainOf: url => (parser.href = url, parser.hostname.replace(/^www\./, ''))
+    domainOf: url => ((parser.href = url), parser.hostname.replace(/^www\./, ''))
   }
 }
 </script>

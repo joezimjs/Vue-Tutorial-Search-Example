@@ -12,7 +12,7 @@
     </div>
 
     <Pagination v-model="page" :records="tutorials.length" :perPage="10" />
-    <TutorialList is='tutorial-list' :tutorials="pageOfTutorials" />
+    <TutorialList :tutorials="pageOfTutorials" />
     <Pagination v-model="page" :records="tutorials.length" :perPage="10" />
 
     <footer class="footer">
@@ -24,16 +24,15 @@
 
 <script>
 import TutorialList from './TutorialList'
-import ResultCounter from './ResultCounter'
 import Pagination from './Pagination'
 import RadioGroup from './RadioGroup'
 import SearchBox from './SearchBox'
 import getArraySection from '../utilities/get-array-section'
-import {tutorials as tutorialData } from '../data'
+import { tutorials as tutorialData } from '../data'
 
 export default {
   name: 'app',
-  components: { TutorialList, ResultCounter, Pagination, RadioGroup, SearchBox },
+  components: { TutorialList, Pagination, RadioGroup, SearchBox },
   data: () => ({
     searchTerm: '',
     tech: '',
@@ -41,24 +40,30 @@ export default {
     page: 1
   }),
   computed: {
-    pageOfTutorials: function () {
+    pageOfTutorials: function() {
       return getArraySection(this.tutorials, this.page, 10)
     }
   },
   watch: {
-    searchTerm: function () { this.filterTutorials() },
-    tech: function () { this.filterTutorials() }
+    searchTerm: function() {
+      this.filterTutorials()
+    },
+    tech: function() {
+      this.filterTutorials()
+    }
   },
   methods: {
-    filterTutorials: function () {
-      const searchTerm = this.searchTerm
+    filterTutorials: function() {
+      const searchTerm = this.searchTerm.toLowerCase()
       const tech = this.tech
       let result = tutorialData
 
       if (searchTerm) {
         result = result.filter(tutorial => {
-          return tutorial.title.toLowerCase().search(searchTerm.toLowerCase()) >= 0 ||
-            tutorial.description.toLowerCase().search(searchTerm.toLowerCase()) >= 0
+          return (
+            tutorial.title.toLowerCase().search(searchTerm) >= 0 ||
+            tutorial.description.toLowerCase().search(searchTerm) >= 0
+          )
         })
       }
 
@@ -70,7 +75,7 @@ export default {
       this.page = 1
     }
   },
-  created: function () {
+  created: function() {
     this.filterTutorials()
   }
 }
