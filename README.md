@@ -19,3 +19,7 @@ npm run build --report
 ```
 
 For detailed explanation on how things work, checkout the [guide for the webpack template](http://vuejs-templates.github.io/webpack/) and [docs for vue-cli](https://github.com/vuejs/vue-cli).
+
+## License 
+
+[MIT](https://opensource.org/licenses/MIT)
