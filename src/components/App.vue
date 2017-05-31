@@ -16,7 +16,7 @@
     <Pagination v-model="page" :items="tutorials.length" :perPage="10" />
 
     <footer class="footer">
-      <p>Copyright &copy; 2017 <a href="https://www.joezimjs.com">Joseph Zimmerman</a></p>
+      <p>Built using <a href="https://vuejs.org/">Vue.js</a>.</p>
     </footer>
 
   </div>
