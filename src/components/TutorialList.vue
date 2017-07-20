@@ -1,7 +1,7 @@
 <template>
   <Transition name="swap" mode="out-in">
-  <div class="tutorial-list" :key="tutorials">
-    <Tutorial class="tutorial" v-for="tutorial in tutorials" :item="tutorial" :key="tutorial" />
+  <div class="tutorial-list" :key="tutorials.map(tut=>tut.url).toString()">
+    <Tutorial class="tutorial" v-for="tutorial in tutorials" :item="tutorial" :key="tutorial.url" />
   </div>
   </Transition>
 </template>

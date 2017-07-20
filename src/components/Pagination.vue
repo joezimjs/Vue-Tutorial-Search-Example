@@ -14,7 +14,7 @@
       </li>
     </ul>
 
-    <p v-show="parseInt(items)">{{count}}</p>
+    <p>{{count}}</p>
   </div>
 </template>
 
@@ -58,7 +58,7 @@ export default {
       let from = (this.page - 1) * this.perPage + 1
       let to = this.page == this.totalPages ? this.items : from + this.perPage - 1
       let parts = this.countText.split('|')
-      let i = this.items == 1 ? 2 : this.totalPages == 1 ? 1 : 0
+      let i = this.items == 1 ? 2 : this.totalPages <= 1 ? 1 : 0
 
       return parts[i].replace('{count}', this.items).replace('{from}', from).replace('{to}', to)
     }
