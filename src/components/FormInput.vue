@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
     <label :for="name"><slot></slot></label>
-    <input :type="type" :name="name" class="form-control" :value="inputValue" @change="updateValue" @input="updateValue" :placeholder="placeholder" :required="required">
+    <input :type="type" :name="name" class="form-control" :value="inputValue" @change="updateValue" @input="updateValue" :required="required">
   </div>
 </template>
 
@@ -15,10 +15,6 @@ export default {
     type: {
       type: String,
       default: 'text'
-    },
-    placeholder: {
-      type: String,
-      default: ''
     },
     required: {
       type: Boolean,

@@ -37,7 +37,6 @@ import SearchBox from './SearchBox'
 import RadioGroup from './RadioGroup'
 import LoadingOverlay from './LoadingOverlay'
 import getArraySection from '../utilities/get-array-section'
-import {mapGetters} from 'vuex'
 
 export default {
   name: 'app',
@@ -59,10 +58,7 @@ export default {
         searchTerm: this.searchTerm.toLowerCase(),
         tech: this.tech
       })
-    },
-    ...mapGetters({
-      isLoaded: 'tutorials/isLoaded'
-    })
+    }
   },
   watch: {
     tutorials() {
@@ -88,17 +84,17 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  max-width: 750px;
-}
+  .container {
+    max-width: 750px;
+  }
 
-.footer {
-  padding: 15px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
+  .footer {
+    padding: 15px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+  }
 
-.header {
-  margin: 10px 0 20px;
-}
+  .header {
+    margin: 10px 0 20px;
+  }
 </style>
