@@ -14,8 +14,6 @@ if (process.env.NODE_ENV === 'development') {
 export default {
   namespaced: true,
   state: {
-    isLoaded: false,
-    isLoading: false,
     data: []
   },
   getters: {
@@ -24,12 +22,6 @@ export default {
     // Namespaced - https://vuex.vuejs.org/en/modules.html#accessing-global-assets-in-namespaced-modules
     tutorials(state) {
       return state.data
-    },
-    isLoaded(state) {
-      return state.isLoaded
-    },
-    isLoading(state) {
-      return state.isLoading
     },
     filtered(state) {
       return function({ searchTerm, tech }) {
@@ -52,30 +44,28 @@ export default {
     }
   },
   mutations: {
-    _isLoaded(state, value) {
-      state.isLoaded = value
-    },
-    _isLoading(state, value) {
-      state.isLoading = value
-    },
     setTutorials(state, payload) {
       state.data = payload
     }
   },
   actions: {
-    load({ commit }) {
-      commit('_isLoading', true)
-      commit('_isLoaded', false)
-
-      tutorialAPI
+    load({ dispatch }) {
+      return dispatch('sync')
+    },
+    addTutorial({ dispatch }, tutorial) {
+      return tutorialAPI.create(tutorial).then(() => dispatch('sync'))
+    },
+    sync({ commit }) {
+      return tutorialAPI
         .sync()
         .then(() => tutorialAPI.list())
         .then((response) => {
-          commit('_isLoading', false)
-          commit('_isLoaded', true)
           commit('setTutorials', response.data)
         })
         .catch(console.error)
+    },
+    delete({ dispatch }, id) {
+      return tutorialAPI.delete(id).then(() => dispatch('sync'))
     }
   }
 }
