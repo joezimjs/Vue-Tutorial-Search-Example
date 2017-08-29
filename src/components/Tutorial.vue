@@ -41,10 +41,6 @@ export default {
 </script>
 
 <style scoped>
-  .tutorial-list-item {
-    position: relative;
-  }
-
   .meta {
     color: #777;
     font-size: .85em;
